@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "type": "module",
   "dependencies": {
     "@clerk/nextjs": "^5.2.2",
     "@hono/zod-validator": "^0.2.2",
