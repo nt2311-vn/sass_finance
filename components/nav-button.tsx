@@ -1,8 +1,6 @@
 import Link from "next/link";
-import { useMedia } from "react-use";
 
 import { Button } from "@/components/ui/button";
-import { SheetTrigger, Sheet, SheetContent } from "@/components/ui/sheet";
 
 import { cn } from "@/lib/utils";
 
