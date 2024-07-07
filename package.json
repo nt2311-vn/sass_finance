@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:generate": "drizzle-kit generate:pg --schema db/schema.ts --out ./drizzle",
+    "db:migrate": "bun ./scripts/migrate.ts",
+    "db:studio": "drizzle-kit studio"
   },
   "type": "module",
   "dependencies": {
@@ -14,10 +17,13 @@
     "@clerk/nextjs": "^5.2.2",
     "@hono/clerk-auth": "^2.0.0",
     "@hono/zod-validator": "^0.2.2",
+    "@neondatabase/serverless": "^0.9.4",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "drizzle-orm": "^0.30.10",
+    "drizzle-zod": "0.5.1",
     "hono": "^4.4.12",
     "lucide-react": "^0.400.0",
     "next": "14.2.4",
@@ -29,13 +35,16 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "dotenv": "^16.4.5",
+    "drizzle-kit": "^0.20.17",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.4",
+    "pg": "^8.12.0",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.4"
+    "typescript": "^5"
   }
 }
