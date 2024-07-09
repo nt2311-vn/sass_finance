@@ -34,4 +34,58 @@ export const AccountForm = ({
   onSubmit,
   onDelete,
   disabled,
-}: Props) => {};
+}: Props) => {
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: defaultValues,
+  });
+
+  const handleSubmit = (values: FormValues) => {
+    onSubmit(values);
+  };
+  const handleDelete = () => {
+    onDelete?.();
+  };
+
+  return (
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(handleSubmit)}
+        className="space-y-4 pt-4"
+      >
+        <FormField
+          name="name"
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Name</FormLabel>
+              <FormControl>
+                <Input
+                  disabled={disabled}
+                  placeholder="e.g Cash, Bank,..."
+                  {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <Button className="w-full" disabled={disabled}>
+          {id ? "Save changes" : "Create account"}
+        </Button>
+        {!!id && (
+          <Button
+            type="button"
+            disabled={disabled}
+            onClick={handleDelete}
+            className="w-full"
+            size="icon"
+            variant="outline"
+          >
+            <Trash className="size-4 mr-2" />
+            Delete account
+          </Button>
+        )}
+      </form>
+    </Form>
+  );
+};
